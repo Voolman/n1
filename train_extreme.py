@@ -58,8 +58,8 @@ def prepare_features_extreme(df):
     return df.drop(columns=[c for c in cols_to_drop if c in df.columns])
 
 # Load data
-train_df = pd.read_csv('/home/ubuntu/task_data/dataset/train_dataset.csv')
-valid_df = pd.read_csv('/home/ubuntu/task_data/dataset/valid_features.csv')
+train_df = pd.read_csv('data/train_dataset.csv')
+valid_df = pd.read_csv('data/valid_features.csv')
 
 # Handle missing values
 train_df['wind_speed_180m'] = train_df['wind_speed_180m'].fillna(train_df['wind_speed_120m'] * 1.05)
@@ -157,6 +157,6 @@ print(f"Final Optimized MAE: {final_mae:.4f}")
 
 # Final predictions
 final_preds = best_w[0] * test_cat + best_w[1] * test_lgb + best_w[2] * test_xgb
-pd.DataFrame(final_preds).to_csv('/home/ubuntu/predictions_extreme.csv', index=False, header=False)
+pd.DataFrame(final_preds).to_csv('predictions_extreme.csv', index=False, header=False)
 
-print("\nExtreme predictions saved to /home/ubuntu/predictions_extreme.csv")
+print("\nExtreme predictions saved to predictions_extreme.csv")

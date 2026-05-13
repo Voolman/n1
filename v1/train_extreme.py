@@ -58,8 +58,8 @@ def prepare_features_extreme(df):
     return df.drop(columns=[c for c in cols_to_drop if c in df.columns])
 
 # Load data
-train_df = pd.read_csv('data/train_dataset.csv')
-valid_df = pd.read_csv('data/valid_features.csv')
+train_df = pd.read_csv('../data/train_dataset.csv')
+valid_df = pd.read_csv('../data/valid_features.csv')
 
 # Handle missing values
 train_df['wind_speed_180m'] = train_df['wind_speed_180m'].fillna(train_df['wind_speed_120m'] * 1.05)

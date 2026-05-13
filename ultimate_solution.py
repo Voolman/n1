@@ -25,8 +25,8 @@ TURBINE_POWER = 3.465
 N_TURBINES = 26
 
 # Пути (настройте под свою систему)
-TRAIN_PATH = '/home/ubuntu/task_data/dataset/train_dataset.csv'
-VALID_PATH = '/home/ubuntu/task_data/dataset/valid_features.csv'
+TRAIN_PATH = 'data/train_dataset.csv'
+VALID_PATH = 'data/valid_features.csv'
 MODEL_DIR = 'ultimate_models'
 PREDICTIONS_PATH = 'ultimate_predictions.csv'
 FEEDBACK_FILE = 'feedback_metrics.json'
@@ -56,7 +56,7 @@ def create_features_ultimate(df, is_train=True):
         if f'wind_speed_{h}' in df.columns:
             # Обработка пропусков для 180m
             if h == '180m':
-                df[h] = df[h].fillna(df['wind_speed_120m'] * 1.05)
+                df[f'wind_speed_{h}'] = df[f'wind_speed_{h}'].fillna(df['wind_speed_120m'] * 1.05)
             
             df[f'ws_{h}_p3'] = df[f'wind_speed_{h}'] ** 3
             df[f'ws_{h}_p2'] = df[f'wind_speed_{h}'] ** 2
